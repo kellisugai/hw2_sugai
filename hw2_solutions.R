@@ -31,5 +31,7 @@ names(speciesData)
 # Add an attribute to each list element showing the sample size. 
 sampleSize <- sapply(speciesData, nrow) # Get sample size for each species. 
 attr(speciesData, "sample_size") <- sampleSize
+
+# Demonstrate how to access the sample size attribute. 
 attributes(speciesData)
 
