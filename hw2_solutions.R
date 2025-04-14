@@ -17,6 +17,7 @@ library(ggplot2)
 library(purrr)
 
 # *** PART 2: DATA STRUCTURES
+# -----------------------------------------------------------------------------
 # 1. List Operations 
 # -----------------------------------------------------------------------------
 
@@ -36,8 +37,10 @@ attr(speciesData, "sample_size") <- sampleSize
 # Demonstrate how to access the sample size attribute. 
 attributes(speciesData)
 
+# -----------------------------------------------------------------------------
 # 2. Matrix vs. Data Frame
 # -----------------------------------------------------------------------------
+
 # Create a matrix containing only the numeric measurements from the penguins
 # data set (bill length, bill depth, flipper length, body mass). 
   
@@ -45,12 +48,24 @@ attributes(speciesData)
 penguins$year <- as.character(as.factor(penguins$year))
 
 # Select columns of penguins data set where type is numeric, store in a matrix.
-numberPenguin <- matrix(select(penguins, where(is.numeric)))
+numberPenguin <- as.matrix(select(penguins, where(is.numeric)))
 
 # Check if type is correct. 
 is.matrix(numberPenguin) # = TRUE, is a matrix.  
 
 # Perform the same operation as a data frame. 
 numbersDf <- data.frame(select(penguins, where(is.numeric)))
+
+# Compare the results and explain any differences. 
+head(numberPenguin)
 head(numbersDf)
+# While these look extremely similar, you'll notice that they are different if 
+# you look at their type. 
+typeof(numberPenguin)
+typeof(numbersDf)
+# The matrix is of type "double", while the data frame is a "list". This is 
+# because a matrix is a 2-dimensional vector, and can only be of one type. 
+# In our case, the type is double, so the entire matrix has a type "double". 
+# By contrast, a data frame is a list of columns. 
+
 
