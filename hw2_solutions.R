@@ -68,4 +68,10 @@ typeof(numbersDf)
 # In our case, the type is double, so the entire matrix has a type "double". 
 # By contrast, a data frame is a list of columns. 
 
+# Describe when you would prefer each data structure (2-3 sentences). 
+# A matrix is good when all of the data is the same type. A data frame is good 
+# if you want to have multiple types of data. Additionally, it is easy to
+# access variables of a data frame using the $ operator. I prefer to use 
+# the data frame for most data analysis. 
+
 
