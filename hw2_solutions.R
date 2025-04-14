@@ -23,6 +23,13 @@ library(purrr)
 data(penguins) # Load penguins data set. 
 (species <- unique(penguins[1])) # Extract unique species. 
 
-# Create a list where each element contains data for one species. # UGGGGGGHGHGHGHG
+# Create a list where each element contains data for one species.
 speciesData <- penguins %>%
   split(.$species)
+names(speciesData)
+
+# Add an attribute to each list element showing the sample size. 
+sampleSize <- sapply(speciesData, nrow) # Get sample size for each species. 
+attr(speciesData, "sample_size") <- sampleSize
+attributes(speciesData)
+
