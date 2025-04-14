@@ -74,4 +74,26 @@ typeof(numbersDf)
 # access variables of a data frame using the $ operator. I prefer to use 
 # the data frame for most data analysis. 
 
+# -----------------------------------------------------------------------------
+# 3, Copy-on-Modify 
+# -----------------------------------------------------------------------------
+
+# Create a vector x with values 1:5. 
+x <- 1:5
+
+# Create a reference y pointing to the same vector. 
+y <- x
+
+# Modify y and explain what happens to x. 
+y <- 1:3
+print(y) # 1 2 3 
+print(x) # 1 2 3 4 5 
+# While y is modified, x remains unchanged. 
+
+# Explain how this behavior differs from languages like Python or Java. 
+# In Python, assigning one variable to another does not automatically create 
+# a copy. Instead, they both point to the same location where the information 
+# is stored. Because of this, modifying the new variable will modify the old 
+# one as well. By contrast, in R, when you modify the new variable it will 
+# automatically make a copy -- leaving the original variable unchanged. 
 
