@@ -18,6 +18,7 @@ library(purrr)
 
 # *** PART 2: DATA STRUCTURES
 # 1. List Operations 
+# -----------------------------------------------------------------------------
 
 # Extract unique species from penguins data set.
 data(penguins) # Load penguins data set. 
@@ -35,3 +36,16 @@ attr(speciesData, "sample_size") <- sampleSize
 # Demonstrate how to access the sample size attribute. 
 attributes(speciesData)
 
+# 2. Matrix vs. Data Frame
+# -----------------------------------------------------------------------------
+# Create a matrix containing only the numeric measurements from the penguins
+# data set (bill length, bill depth, flipper length, body mass). 
+  
+# Change data type of year column so it won't be included. 
+penguins$year <- as.character(as.factor(penguins$year))
+
+# Select columns of penguins dataset where type is numeric, store in a matrix.
+numberPenguin <- matrix(select(penguins, where(is.numeric)))
+
+# Check if type is correct. 
+is.matrix(numberPenguin) # = TRUE 
