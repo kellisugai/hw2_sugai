@@ -44,8 +44,13 @@ attributes(speciesData)
 # Change data type of year column so it won't be included. 
 penguins$year <- as.character(as.factor(penguins$year))
 
-# Select columns of penguins dataset where type is numeric, store in a matrix.
+# Select columns of penguins data set where type is numeric, store in a matrix.
 numberPenguin <- matrix(select(penguins, where(is.numeric)))
 
 # Check if type is correct. 
-is.matrix(numberPenguin) # = TRUE 
+is.matrix(numberPenguin) # = TRUE, is a matrix.  
+
+# Perform the same operation as a data frame. 
+numbersDf <- data.frame(select(penguins, where(is.numeric)))
+head(numbersDf)
+
