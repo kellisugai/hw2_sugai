@@ -75,7 +75,7 @@ typeof(numbersDf)
 # the data frame for most data analysis. 
 
 # -----------------------------------------------------------------------------
-# 3, Copy-on-Modify 
+# 3. Copy-on-Modify 
 # -----------------------------------------------------------------------------
 
 # Create a vector x with values 1:5. 
@@ -97,3 +97,33 @@ print(x) # 1 2 3 4 5
 # one as well. By contrast, in R, when you modify the new variable it will 
 # automatically make a copy -- leaving the original variable unchanged. 
 
+# *** PART 3: MAP FUNCTIONS 
+# -----------------------------------------------------------------------------
+# 4. Base R Apply Functions 
+# -----------------------------------------------------------------------------
+
+# Use lapply() to calculate the mean of each numeric variable in the 
+# penguins data set (excluding NA's). 
+(lMeans <- lapply(numbersDf, mean, na.rm = T))
+
+# Use tapply() to find the mean body mass by species. 
+(massSpecies <- tapply(
+  X = penguins$body_mass_g,
+  INDEX = penguins$species,
+  FUN = function(x) mean(x, na.rm = TRUE)
+)) 
+
+# Use tapply() again to find the mean body mass by both species and sex. 
+(massTwo <- tapply(
+  X = penguins$body_mass_g, 
+  INDEX = list(penguins$species, penguins$sex), 
+  FUN = function(x) mean(x, na.rm = TRUE)
+))
+
+# Compare the output types from each function (1-2 sentences). 
+typeof(lMeans) # "list" 
+typeof(massSpecies) # "double" 
+typeof(massTwo) # "double"
+
+# The output of lapply() is always a list, but the output of tapply() is
+# dependent on the input and the grouping factor. 
