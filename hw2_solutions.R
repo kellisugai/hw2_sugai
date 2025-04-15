@@ -127,3 +127,15 @@ typeof(massTwo) # "double"
 
 # The output of lapply() is always a list, but the output of tapply() is
 # dependent on the input and the grouping factor. 
+
+# -----------------------------------------------------------------------------
+# 5. Purrr Map Functions 
+# -----------------------------------------------------------------------------
+
+# Rewrite the first task from question 4 using map_dbl(). 
+(dblMeans <- map_dbl(.x = numbersDf, .f = mean, na.rm = T))
+
+# Use map2() to calculate the ratio of bill length to bill depth
+# for each species. 
+
+     
