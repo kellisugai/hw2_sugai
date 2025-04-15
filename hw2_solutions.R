@@ -166,3 +166,33 @@ listVariables <- c(penguins[,3:6]) # Make list of measurement variables.
 # but I don't find map() to be as intuitive. 
 
 
+# -----------------------------------------------------------------------------
+# 6. Practical Applications 
+# -----------------------------------------------------------------------------
+
+# Use the map pattern to create a separate histogram for each numeric variable 
+# in the penguins data set. Each histogram should:
+  # – Have an appropriate title based on the variable name
+  # – Use faceting to show separate histograms by species
+  # – Use a color palette that distinguishes between species
+(histogramPenguin <- map2(
+  .x = listVariables, # Numeric variables. 
+  .y = names(listVariables), # Variable names. 
+  .f = function(variable, namesOf){
+      ggplot(data = penguins, 
+             mapping = aes(x = .data[[namesOf]], fill = species)) + 
+      geom_histogram() + 
+      facet_wrap(~species) + 
+      labs(title = paste("Counts of ", namesOf))
+      }
+  ))
+
+# Write a brief explanation (2-3 sentences) of how this approach is more
+# efficient than writing separate code for each plot. 
+
+# This is more efficient than writing separate code for each plot because it 
+# allows me to repeat the same settings of the plot without needing to 
+# actually rewrite the code. If I had done this separately, it would have taken 
+# 3 times as many lines of code. 
+
+
