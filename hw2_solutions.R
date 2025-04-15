@@ -159,3 +159,10 @@ listVariables <- c(penguins[,3:6]) # Make list of measurement variables.
   )
 ))
 
+# Explain which approach you prefer (base R vs purrr) and why (2-3 sentences). 
+
+# Personally, I prefer the base R approach. This is because the arguments of 
+# the apply() functions are easy for me to understand. Purrr is very similar, 
+# but I don't find map() to be as intuitive. 
+
+
