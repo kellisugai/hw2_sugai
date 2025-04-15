@@ -137,5 +137,25 @@ typeof(massTwo) # "double"
 
 # Use map2() to calculate the ratio of bill length to bill depth
 # for each species. 
+(bill_ratio <- map2_dbl(
+  .x = map(speciesData, "bill_length_mm"),
+  .y = map(speciesData, "bill_depth_mm"),
+  .f = ~ mean(.x / .y, na.rm = TRUE)
+))
 
-     
+attr(speciesData, "bill_ratio") <- bill_ratio # Add as an attribute to our list. 
+attributes(speciesData)
+
+# Create a list where each element contains a different statistic 
+# (mean, median, sd) for each measurement variable. 
+
+listVariables <- c(penguins[,3:6]) # Make list of measurement variables. 
+(summaryPenguin <- map(
+  listVariables,
+  ~list(
+    mean = mean(.x, na.rm = T), 
+    median = median(.x, na.rm = T), 
+    sd = sd(.x, na.rm = T)
+  )
+))
+
