@@ -237,3 +237,27 @@ originalTime - revisedTime
 # Mine instead modifies an existing vector. 
 
 
+# -----------------------------------------------------------------------------
+# 8. Data Structure Selection  
+# -----------------------------------------------------------------------------
+
+# For each of the following scenarios, identify the most appropriate data
+# structure and explain why. 
+
+# a. Storing patient IDs and their blood pressure readings. 
+# Data frame as it allows us to combine multiple types of data in one 
+# structure. In this case, patient IDs (integer or character) and blood pressure
+# readings (double). 
+
+# b. Representing a correlation matrix between 5 variables. 
+# A matrix, as we only need to store one type of data and it can be efficiently 
+# computed with. 
+
+# c. Organizing multiple statistical models applied to different subsets of data. 
+# A list with attributes. We can store models as elements in the list, and use 
+# the names attribute to add their names, and other attributes to organize 
+# relevant metadata. 
+
+# d. Storing latitude and longitude coordinates for map plotting. 
+# A data frame so that we can easily use base R plotting functions or ggplot2 
+# to represent the data. 
