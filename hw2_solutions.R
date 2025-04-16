@@ -195,4 +195,45 @@ listVariables <- c(penguins[,3:6]) # Make list of measurement variables.
 # actually rewrite the code. If I had done this separately, it would have taken 
 # 3 times as many lines of code. 
 
+# *** PART 4: MEMORY MANAGEMENT
+# -----------------------------------------------------------------------------
+# 7. Efficient Code  
+# -----------------------------------------------------------------------------
+
+# The following code is inefficient. Rewrite it using pre-allocation:
+  # result <- numeric(0)
+  # for(i in 1:10000) {result <- c(result, iˆ2)} 
+
+result <- numeric(10000)
+for(i in 1:10000) {
+  result[i] <- i^2
+  } 
+
+# Compare the execution time of your version vs. the original using system.time().
+originalTime <- system.time({
+  result <- numeric(0)
+  for(i in 1:10000){
+    result <- c(result, i^2)
+  }
+})
+
+revisedTime <- system.time({
+  result <- numeric(10000)
+  for(i in 1:10000) {
+    result[i] <- i^2
+  } 
+})
+
+originalTime - revisedTime
+#    user  system elapsed 
+#   0.05    0.04    0.20 
+
+# Explain why your version is more efficient in terms of R’s memory model
+# (2-3 sentences). 
+
+# My version is more efficient because it does not recopy and rebuild a 
+# large vector every time it is run. Because of copy-on-modify, the original 
+# method is creating a new copy of the vector for each iteration of the loop. 
+# Mine instead modifies an existing vector. 
+
 
