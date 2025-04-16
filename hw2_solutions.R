@@ -5,6 +5,8 @@
 # Date: 4/11/2025 
 # The purpose of this script is to practice working with data structures, 
 # mapping, and memory management. 
+# Disclaimer: All work here is my own. I used ChatGPT to debug code and to 
+# further explain some of the arguments of the functions used. 
 # ============================================================================
 
 # *** PART 1: VERSION CONTROL SETUP 
